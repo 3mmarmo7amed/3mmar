@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marce Parfum — Product</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="images/marce.png" alt="Marce Parfum" class="logo" />
+        </div>
+
+        <nav class="menu-bar">
+            <button class="menu-toggle" onclick="document.querySelector('.menu-dropdown').classList.toggle('open')">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="menu-dropdown">
+                <li><a href="#">Sign in</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Address</a></li>
+                <li><a href="index.html">Other parfum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="product-page">
+        <a href="index.html" class="back-link">← Back to collection</a>
+
+        <div class="product-detail" id="productDetail">
+            <!-- هيتملى بالـ JavaScript -->
+        </div>
+    </section>
+
+    <script src="products.js"></script>
+    <script>
+        // بنقرا رقم المنتج من الرابط، مثلا product.html?id=2
+        const params = new URLSearchParams(window.location.search);
+        const id = Number(params.get("id"));
+
+        // بندور عليه في مصفوفة products
+        const product = products.find((p) => p.id === id);
+
+        const container = document.getElementById("productDetail");
+
+        if (!product) {
+            container.innerHTML = `
+                <div class="product-info">
+                    <h1 class="fragrance-name">Product not found</h1>
+                    <p class="fragrance-desc">Please go back and choose a fragrance from the collection.</p>
+                </div>
+            `;
+        } else {
+            container.innerHTML = `
+                <div class="image-wrapper">
+                    <img src="${product.image}" class="fragrance-image" alt="${product.name}">
+                </div>
+                <div class="product-info">
+                    <h3 class="fragrance-name">${product.name}</h3>
+                    <p class="fragrance-type">${product.type}</p>
+                    <p class="product-price" id="priceDisplay">${product.price} EGP</p>
+                    <p class="fragrance-desc">${product.description}</p>
+                    <div class="fragrance-notes">
+                        <p><span>TOP</span> ${product.notes.top}</p>
+                        <p><span>HEART</span> ${product.notes.heart}</p>
+                        <p><span>BASE</span> ${product.notes.base}</p>
+                    </div>
+
+                    <div class="quantity-row">
+                        <span class="quantity-label">QUANTITY</span>
+                        <div class="quantity-control">
+                            <button type="button" id="decreaseBtn">−</button>
+                            <span id="quantityValue">1</span>
+                            <button type="button" id="increaseBtn">+</button>
+                        </div>
+                    </div>
+
+                    <p class="total-price">Total: <span id="totalPrice">${product.price}</span> EGP</p>
+
+                    <div class="card-footer" style="justify-content:flex-start; gap:15px;">
+                        <span class="natural-badge">NATURAL</span>
+                        <button type="button" class="buy-btn" id="buyBtn">BUY NOW</button>
+                    </div>
+                </div>
+            `;
+
+            // منطق زيادة ونقصان الكمية وحساب السعر الإجمالي
+            let quantity = 1;
+            const qtyDisplay = document.getElementById("quantityValue");
+            const totalDisplay = document.getElementById("totalPrice");
+
+            function updateTotal() {
+                qtyDisplay.textContent = quantity;
+                totalDisplay.textContent = product.price * quantity;
+            }
+
+            document.getElementById("increaseBtn").addEventListener("click", () => {
+                quantity++;
+                updateTotal();
+            });
+
+            document.getElementById("decreaseBtn").addEventListener("click", () => {
+                if (quantity > 1) {
+                    quantity--;
+                    updateTotal();
+                }
+            });
+
+            // زرار الشراء - دلوقتي بس بيعرض تأكيد، لحد ما تربطه بنظام دفع حقيقي
+            document.getElementById("buyBtn").addEventListener("click", () => {
+                alert(
+                    `Order confirmed:\n${product.name} x${quantity}\nTotal: ${product.price * quantity} EGP`
+                );
+            });
+        }
+    </script>
+
+</body>
+</html>

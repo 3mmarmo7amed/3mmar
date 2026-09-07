@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marce Parfum</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="images/marce.png" alt="Marce Parfum" class="logo" />
+        </div>
+
+        <nav class="menu-bar">
+            <button class="menu-toggle" onclick="document.querySelector('.menu-dropdown').classList.toggle('open')">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="menu-dropdown">
+                <li><a href="#">Sign in</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Address</a></li>
+                <li><a href="index.html">Other parfum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 1. BEST SELLERS (صور فقط بدون تفاصيل - في الأعلى) -->
+    <section class="posts-section">
+        <h2 class="posts-title">BEST SELLERS</h2>
+        <div class="posts-grid">
+            <a class="post-item" href="product.html?id=1">
+                <div class="post-frame">
+                    <img src="images/post1.png" alt="Velvet Oud" />
+                </div>
+            </a>
+            <a class="post-item" href="product.html?id=4">
+                <div class="post-frame">
+                    <img src="images/post4.png" alt="Tobacco Vanille" />
+                </div>
+            </a>
+        </div>
+
+        <div class="posts-grid posts-extra" id="postsExtra">
+            <a class="post-item" href="product.html?id=2">
+                <div class="post-frame">
+                    <img src="images/post2.png" alt="Citrus Noir" />
+                </div>
+            </a>
+            <a class="post-item" href="product.html?id=3">
+                <div class="post-frame">
+                    <img src="images/post3.png" alt="Rose Elixir" />
+                </div>
+            </a>
+        </div>
+
+        <button class="more-btn" onclick="document.getElementById('postsExtra').classList.toggle('open'); this.textContent = this.textContent === 'MORE' ? 'LESS' : 'MORE';">MORE</button>
+    </section>
+
+    <!-- 2. OUR FRAGRANCES (الكروت بالتفاصيل - في الأسفل) -->
+    <section class="collection-section">
+        <h2 class="collection-title">OUR FRAGRANCES</h2>
+        <p class="collection-subtitle">CRAFTED WITH 100% NATURAL INGREDIENTS</p>
+
+        <div class="collection-grid">
+
+            <div class="fragrance-card">
+                <div class="image-wrapper">
+                    <img src="images/post1.png" class="fragrance-image" alt="Velvet Oud" />
+                </div>
+                <h3 class="fragrance-name">Velvet Oud</h3>
+                <p class="fragrance-type">EAU DE PARFUM</p>
+                <p class="fragrance-desc">A rich and sophisticated fragrance that combines the deep sensuality of oud with warm woods, soft spices, and a smooth amber sweetness.</p>
+                <p class="card-price">850 EGP</p>
+                <div class="card-footer">
+                    <span class="natural-badge">NATURAL</span>
+                    <a href="product.html?id=1" class="discover-btn">DISCOVER</a>
+                </div>
+            </div>
+
+            <div class="fragrance-card">
+                <div class="image-wrapper">
+                    <img src="images/post2.png" class="fragrance-image" alt="Citrus Noir" />
+                </div>
+                <h3 class="fragrance-name">Citrus Noir</h3>
+                <p class="fragrance-type">EAU DE PARFUM</p>
+                <p class="fragrance-desc">A fresh and vibrant fragrance opening with sparkling citrus and aromatic spices, balanced by elegant florals and a warm woody base.</p>
+                <p class="card-price">620 EGP</p>
+                <div class="card-footer">
+                    <span class="natural-badge">NATURAL</span>
+                    <a href="product.html?id=2" class="discover-btn">DISCOVER</a>
+                </div>
+            </div>
+
+            <div class="fragrance-card">
+                <div class="image-wrapper">
+                    <img src="images/post3.png" class="fragrance-image" alt="Rose Elixir" />
+                </div>
+                <h3 class="fragrance-name">Rose Elixir</h3>
+                <p class="fragrance-type">EAU DE PARFUM</p>
+                <p class="fragrance-desc">A romantic and elegant floral fragrance centered around velvety rose petals, complemented by juicy fruits and a soft, sensual musk.</p>
+                <p class="card-price">780 EGP</p>
+                <div class="card-footer">
+                    <span class="natural-badge">NATURAL</span>
+                    <a href="product.html?id=3" class="discover-btn">DISCOVER</a>
+                </div>
+            </div>
+
+            <div class="fragrance-card">
+                <div class="image-wrapper">
+                    <img src="images/post4.png" class="fragrance-image" alt="Tobacco Vanille" />
+                </div>
+                <h3 class="fragrance-name">Tobacco Vanille</h3>
+                <p class="fragrance-type">EAU DE PARFUM</p>
+                <p class="fragrance-desc">A warm and addictive fragrance blending rich tobacco leaves with creamy vanilla, dried fruits, and subtle spices.</p>
+                <p class="card-price">990 EGP</p>
+                <div class="card-footer">
+                    <span class="natural-badge">NATURAL</span>
+                    <a href="product.html?id=4" class="discover-btn">DISCOVER</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. ABOUT MARCE -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2 class="about-title">ABOUT MARCE</h2>
+            <p class="about-text">
+                Marce Parfum was born from a simple belief: fragrance should be honest.
+                Every scent we create is crafted with 100% natural ingredients — no
+                synthetic fillers, no shortcuts — just carefully sourced oils, resins,
+                and botanicals blended by hand in small batches.
+            </p>
+            <p class="about-text">
+                We work directly with growers and distillers who share our respect for
+                the land, so every bottle carries the true character of its ingredients,
+                not an imitation of it.
+            </p>
+            <div class="about-badges">
+                <span class="about-badge">100% NATURAL</span>
+                <span class="about-badge">CRUELTY FREE</span>
+                <span class="about-badge">HAND CRAFTED</span>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
